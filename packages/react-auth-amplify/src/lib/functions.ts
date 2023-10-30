@@ -352,7 +352,7 @@ export async function getCurrentUser(
   auth?: typeof Auth
 ): Promise<FunctionOutput<CurrentAuthenticatedUserReturn>> {
   try {
-    const authClass = auth || Auth;
+    const authClass = auth ?? Auth;
     const getCurrentAuthenticatedUser = authClass.currentAuthenticatedUser;
     const res: CurrentAuthenticatedUserReturn =
       await getCurrentAuthenticatedUser();
