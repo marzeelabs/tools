@@ -1,49 +1,39 @@
-# marzee-tools
+# @marzee/tsconfig
 
-> A set of tools commonly used at marzee
+> A TSconfig with the latest best practices
 
-background details relevant to understanding what this module does
+`@marzee/tsconfig` provides an opinionated TSconfig with the latest best practices for both Next and Node projects.
 
 ## Usage
 
-```js
-var marzeeTools = require('marzee-tools')
+### Next.js
 
-console.log('hello warld')
+```json
+{
+  "extends": "@marzee/tsconfig/next",
+  // the rest of your config here
+}
 ```
 
-outputs
+### Node
 
+```json
+{
+  "extends": "@marzee/tsconfig/node",
+  // the rest of your config here
+}
 ```
-hello warld
-```
-
-## API
-
-```js
-var marzeeTools = require('marzee-tools')
-```
-
-See [api_formatting.md](api_formatting.md) for tips.
 
 ## Install
 
-With [npm](https://npmjs.org/) installed, run
-
-```
-$ npm install marzee-tools
+```sh
+npm i -D @marzee/tsconfig
 ```
 
-## Acknowledgments
+```sh
+pnpm i -D @marzee/tsconfig
+```
 
-marzee-tools was inspired by..
-
-## See Also
-
-- [`noffle/common-readme`](https://github.com/noffle/common-readme)
-- ...
-
-## License
-
-ISC
-
+```sh
+yarn add -D @marzee/tsconfig
+```

@@ -1,8 +1,8 @@
-# react-auth-amplify
+# @marzee/react-auth-amplify
 
 > A React.js-Amplify Auth integration
 
-`react-auth-amplify` provides a straightforward integration for email and password authentication with AWS cognito. Optionally, it integrates with Next.js.
+`@marzee/react-auth-amplify` provides a straightforward integration for email and password authentication with AWS cognito. Optionally, it integrates with Next.js.
 
 ## Usage
 
@@ -144,15 +144,15 @@ The following functions are available:
 ## Install
 
 ```sh
-npm i @marzeetools/react-auth-amplify aws-amplify@^5
+npm i @marzee/react-auth-amplify aws-amplify@^5
 ```
 
 ```sh
-pnpm i @marzeetools/react-auth-amplify aws-amplify@^5
+pnpm i @marzee/react-auth-amplify aws-amplify@^5
 ```
 
 ```sh
-yarn i @marzeetools/react-auth-amplify aws-amplify@^5
+yarn i @marzee/react-auth-amplify aws-amplify@^5
 ```
 
 ## License

@@ -1,49 +1,37 @@
-# marzee-tools
+# @marzee/eslint
 
-> A set of tools commonly used at marzee
+> Ready-to-use ESLint configuration for Next.js/TypeScript projects
 
-background details relevant to understanding what this module does
+`@marzee/eslint` provides a set of opinionated ESLint configurations for Next.js/TypeScript projects.
 
 ## Usage
 
 ```js
-var marzeeTools = require('marzee-tools')
+/** @type {import("eslint").Linter.Config} */
+const config = {
+  extends: [
+    '@marzee/eslint/next',
+  ],
+};
 
-console.log('hello warld')
+export default config;
+
 ```
-
-outputs
-
-```
-hello warld
-```
-
-## API
-
-```js
-var marzeeTools = require('marzee-tools')
-```
-
-See [api_formatting.md](api_formatting.md) for tips.
 
 ## Install
 
-With [npm](https://npmjs.org/) installed, run
-
-```
-$ npm install marzee-tools
+```sh
+npm i -D @marzee/eslint
 ```
 
-## Acknowledgments
+```sh
+pnpm i -D @marzee/eslint
+```
 
-marzee-tools was inspired by..
-
-## See Also
-
-- [`noffle/common-readme`](https://github.com/noffle/common-readme)
-- ...
+```sh
+yarn add -D @marzee/eslint
+```
 
 ## License
 
 ISC
-

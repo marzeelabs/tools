@@ -1,5 +1,5 @@
 {
-  "name": "@marzee/tsconfig-node18",
+  "name": "@marzee/tsconfig",
   "version": "1.0.0",
   "description": "A TSconfig with the latest best practices",
   "repository": {
