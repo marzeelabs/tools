@@ -6,11 +6,11 @@ export {
   deleteUser,
   deleteUserAttributes,
   forgotPassword,
+  getServerAuth,
   signIn,
   signOut,
   signUp,
   updateUserAttributes,
   type UserAttributes
 } from './lib/functions';
-export * from './lib/next';
 export * from './react/provider';

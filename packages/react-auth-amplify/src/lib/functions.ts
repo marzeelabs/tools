@@ -1,4 +1,5 @@
-import { Auth } from 'aws-amplify';
+import { Auth, withSSRContext } from 'aws-amplify';
+import type { GetServerSidePropsContext } from 'next';
 
 type CognitoDefaults = {
   /**
@@ -449,4 +450,13 @@ export async function deleteUser(): Promise<
       err: error
     };
   }
+}
+
+/**
+ * @description This is a next.js specific option, it is to be used ONLY inside `getServerSideProps`
+ */
+export async function getServerAuth(ctx: GetServerSidePropsContext) {
+  const amplify = withSSRContext({ req: ctx.req });
+  const auth: typeof Auth = amplify.Auth;
+  return await getCurrentUser(auth);
 }
