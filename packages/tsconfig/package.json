@@ -29,7 +29,7 @@
   },
   "scripts": {
     "build": "esbuild ./src/index.ts --bundle --platform=node --minify --outdir=dist",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "pnpm run build"
   },
   "author": "Karim Daghari",
   "license": "ISC",

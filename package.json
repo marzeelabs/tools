@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "A set of tools commonly used at marzee",
   "scripts": {
-    "build": "npm run build --workspaces",
-    "release": "npm run build && changeset publish",
+    "build": "pnpm run build --workspaces",
+    "release": "pnpm run build && changeset publish",
     "commitlint": "commitlint --edit"
   },
   "author": "Karim Daghari",

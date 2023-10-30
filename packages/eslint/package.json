@@ -25,10 +25,10 @@
   },
   "scripts": {
     "build:runner": "esbuild ./src/index.js --bundle --minify --platform=node",
-    "build:esm": "npm run build:runner -- --outfile=dist/index.js --format=esm",
-    "build:cjs": "npm run build:runner -- --outfile=dist/index.cjs --format=cjs",
-    "build": "npm run build:esm && npm run build:cjs",
-    "prepublishOnly": "npm run build"
+    "build:esm": "pnpm run build:runner -- --outfile=dist/index.js --format=esm",
+    "build:cjs": "pnpm run build:runner -- --outfile=dist/index.cjs --format=cjs",
+    "build": "pnpm run build:esm && pnpm run build:cjs",
+    "prepublishOnly": "pnpm run build"
   },
   "author": "Karim Daghari",
   "license": "ISC",
