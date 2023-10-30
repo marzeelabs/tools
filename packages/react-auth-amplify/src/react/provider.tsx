@@ -45,12 +45,12 @@ export function AuthProvider({ children, events, setup }: Props) {
   );
 
   React.useEffect(() => {
-    if (currentUser) return;
+    if (currentUser !== null) return;
     (async () => {
       const { data: user } = await getCurrentUser();
       if (user) setCurrentUser(user.attributes);
     })();
-  }, [currentUser, setCurrentUser]);
+  }, [currentUser]);
 
   React.useEffect(() => {
     Hub.listen('auth', (data) => {
@@ -72,7 +72,7 @@ export function AuthProvider({ children, events, setup }: Props) {
         }
       }
     });
-  }, [events, currentUser, setCurrentUser]);
+  }, [events, currentUser]);
 
   return (
     <AuthContext.Provider value={{ currentUser }}>
