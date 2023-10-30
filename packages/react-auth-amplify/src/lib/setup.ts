@@ -42,6 +42,9 @@ export function useSetupAmplify({ cookieDomain, ...props }: SetupProps) {
         ...props,
         cookieStorage: {
           domain: cookieDomain,
+          /**
+           * Although Chrome/FF allow cookies to be set on localhost, Safari does not.
+           */
           secure: process.env.NODE_ENV === 'production'
         }
       }
