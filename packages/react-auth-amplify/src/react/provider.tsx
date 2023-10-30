@@ -1,11 +1,5 @@
 import { Hub } from 'aws-amplify';
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  type PropsWithChildren
-} from 'react';
+import React from 'react';
 import { getCurrentUser, type CognitoUser } from '../lib/functions';
 import { useSetupAmplify, type SetupProps } from '../lib/setup';
 import type { AuthEventType, HubEventHandler } from '../types/amplify';
@@ -16,7 +10,7 @@ type TContext = {
   currentUser: CurrentUser | null;
 };
 
-const AuthContext = createContext<undefined | TContext>(undefined);
+const AuthContext = React.createContext<undefined | TContext>(undefined);
 AuthContext.displayName = 'AuthContext';
 
 type EventsTypes = {
@@ -41,14 +35,16 @@ type AuthProviderProps = {
   setup: SetupProps;
 } & Partial<EventsTypes>;
 
-type Props = PropsWithChildren<AuthProviderProps>;
+type Props = React.PropsWithChildren<AuthProviderProps>;
 
 export function AuthProvider({ children, events, setup }: Props) {
   useSetupAmplify(setup);
 
-  const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
+  const [currentUser, setCurrentUser] = React.useState<CurrentUser | null>(
+    null
+  );
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (currentUser) return;
     (async () => {
       const { data: user } = await getCurrentUser();
@@ -56,7 +52,7 @@ export function AuthProvider({ children, events, setup }: Props) {
     })();
   }, [currentUser, setCurrentUser]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     Hub.listen('auth', (data) => {
       const event: AuthEventType = data?.payload?.event;
       if (event === 'signIn') {
@@ -86,7 +82,7 @@ export function AuthProvider({ children, events, setup }: Props) {
 }
 
 export function useAuthContext() {
-  const context = useContext(AuthContext);
+  const context = React.useContext(AuthContext);
   if (context === undefined)
     throw new Error(
       'useAuthContext must be used within an AuthProvider. Just wrap your app in one!'
