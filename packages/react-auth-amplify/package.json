@@ -1,6 +1,6 @@
 {
   "name": "@marzee/react-auth-amplify",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A React.js-Amplify Auth integration",
   "repository": {
     "type": "git",
