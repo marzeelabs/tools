@@ -1,0 +1,41 @@
+{
+  "name": "@marzeelabs/tsconfig-node18",
+  "version": "1.0.0",
+  "description": "A TSconfig with the latest best practices",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marzeelabs/tools.git",
+    "directory": "packages/tsconfig"
+  },
+  "release": {
+    "branches": [
+      {
+        "name": "main"
+      },
+      {
+        "name": "dev",
+        "prerelease": true
+      }
+    ]
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "scripts": {
+    "build": "esbuild ./src/index.ts --bundle --platform=node --minify --outdir=dist",
+    "prepublishOnly": "npm run build"
+  },
+  "author": "Karim Daghari",
+  "license": "ISC",
+  "devDependencies": {
+    "@tsconfig/next": "^2.0.1",
+    "@tsconfig/node18": "^18.2.2",
+    "esbuild": "^0.19.5"
+  }
+}

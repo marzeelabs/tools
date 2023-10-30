@@ -1,0 +1,11 @@
+{
+  "extends": "../tsconfig/src/tsconfig.next.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist",
+    // See: https://github.com/egoist/tsup/issues/884
+    "incremental": false
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}

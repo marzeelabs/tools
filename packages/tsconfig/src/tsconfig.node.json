@@ -1,0 +1,15 @@
+{
+  "extends": "@tsconfig/node18/tsconfig.json",
+  "compilerOptions": {
+    "incremental": true,
+    "verbatimModuleSyntax": true,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
+    "importHelpers": true,
+    "noUncheckedIndexedAccess": false,
+    "checkJs": true
+  }
+}
