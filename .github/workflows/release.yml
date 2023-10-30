@@ -1,6 +1,6 @@
 # see: https://semantic-release.gitbook.io/semantic-release/recipes/ci-configurations/github-actions#.github-workflows-release.yml-configuration-for-node-projects
 
-name: Release Packages
+name: Release
 
 on:
   push:

@@ -1,5 +1,5 @@
 {
-  "name": "@marzeelabs/eslint",
+  "name": "@marzee/eslint",
   "version": "1.0.0",
   "description": "Ready-to-use ESLint configuration for Next.js/TypeScript projects",
   "repository": {
