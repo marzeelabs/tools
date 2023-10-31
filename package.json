@@ -4,7 +4,7 @@
   "description": "A set of tools commonly used at marzee",
   "scripts": {
     "build": "pnpm --filter \"./packages/*\" build",
-    "release": "pnpm run build && pnpm --filter \"./packages/*\" release --ci",
+    "release": "pnpm run build && pnpm --filter \"./packages/*\" publish",
     "commitlint": "commitlint --edit"
   },
   "author": "Karim Daghari",
@@ -15,16 +15,6 @@
   "devDependencies": {
     "@commitlint/cli": "^18.1.0",
     "@commitlint/config-conventional": "^18.1.0",
-    "husky": "^8.0.3",
-    "release-it": "^16.2.1"
-  },
-  "release-it": {
-    "git": {
-      "requireCleanWorkingDir": false
-    },
-    "npm": {
-      "publish": false
-    },
-    "github": true
+    "husky": "^8.0.3"
   }
 }

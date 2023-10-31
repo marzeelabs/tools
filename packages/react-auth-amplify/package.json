@@ -23,8 +23,7 @@
   },
   "scripts": {
     "build": "npx tsup src/index.ts --format esm,cjs --minify --dts --treeshake --clean",
-    "prepublishOnly": "pnpm run build",
-    "release": "release-it"
+    "prepublishOnly": "pnpm run build"
   },
   "author": "Karim Daghari",
   "license": "ISC",
@@ -47,8 +46,5 @@
     "next": {
       "optional": true
     }
-  },
-  "release-it": {
-    "git": false
   }
 }

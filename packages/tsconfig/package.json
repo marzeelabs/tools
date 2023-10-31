@@ -10,13 +10,8 @@
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {
-    "release": "release-it"
-  },
+  "scripts": {},
   "author": "Karim Daghari",
   "license": "ISC",
-  "devDependencies": {},
-  "release-it": {
-    "git": false
-  }
+  "devDependencies": {}
 }
