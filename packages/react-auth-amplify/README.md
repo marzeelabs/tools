@@ -6,20 +6,32 @@
 
 ## Usage
 
+1. Create a file called `lib/auth.ts` and export the following object:
+
+```ts
+import { type AmplifyAuthConfig as Config } from "@marzee/react-auth-amplify";
+export const amplifyAuthConfig: Config = {
+  Auth: {
+    identityPoolId: process.env.IDENTITY_POOL_ID,
+    region: process.env.REGION,
+    userPoolId: process.env.USER_POOL_ID,
+    userPoolWebClientId: process.env.USER_POOL_WEB_CLIENT_ID
+  }
+  ssr: true // only if you plan on using SSR (with Next.js), otherwise simply omit it.
+};
+
+```
+
 1. Wrap your app using `AuthProvider`
   
 ```tsx
-import { AuthProvider } from "@marzeelabs/react-auth-amplify"
+import { AuthProvider } from "@marzeelabs/react-auth-amplify";
+import { amplifyAuthConfig } from "lib/auth";
 
 export function AppWrapper() {
   return (
     <AuthProvider
-      setup={{
-        identityPoolId: process.env.IDENTITY_POOL_ID,
-        region: process.env.REGION,
-        userPoolId: process.env.USER_POOL_ID,
-        userPoolWebClientId: process.env.USER_POOL_WEB_CLIENT_ID
-      }}
+      config={amplifyAuthConfig}
       events={{
         signIn: (data) => {
           // do what you want after the signIn event has been fired (e.g., redirect to a page)
@@ -31,7 +43,7 @@ export function AppWrapper() {
 }
 ```
 
-1. Use the `signIn/signOut/etc...` functions in combination with your components to control the authentication flow (see [API](#api) section below for all available functions)
+3. Use the `signIn/signOut/etc...` functions in combination with your components to control the authentication flow (see [API](#api) section below for all available functions)
 
 ```tsx
 import { useForm } from 'react-hook-form';
@@ -64,7 +76,7 @@ export const SignInComponent = () => {
 }
 ```
 
-3. Get the current user using the `useAuthContext` hook
+4. Get the current user using the `useAuthContext` hook
 
 ```tsx
 import { useAuthContext } from '@marzeelabs/react-auth-amplify';
@@ -77,7 +89,7 @@ export const Component = () => {
 
 ```
 
-4. If you want to extend the type of the `currentUser` you can do so by using module augmentation
+5. If you want to extend the type of the `currentUser` you can do so by using module augmentation
 
 ```ts
 declare module '@marzeelabs/react-auth-amplify' {
@@ -87,32 +99,25 @@ declare module '@marzeelabs/react-auth-amplify' {
 }
 ```
 
-5. If you to use this package in Next.js:
-   1. you need to set the `ssr` option to `true` in the `AuthProvider` component (see below)
+6. If you to use this package in Next.js:
+   1. you need to set the `ssr` option to `true` in the `lib/auth.ts` file (see below)
    2. Use the `getServerAuth` function to get the current user in the `getServerSideProps` function of your page
 
 ```tsx
-import { AuthProvider } from "@marzeelabs/react-auth-amplify"
+// your other imports...
+import { amplifyAuthConfig } from "lib/auth";
 
-export function AppWrapper() {
-  return (
-    <AuthProvider
-      setup={{
-        ssr: true, // by default this is set to false, if you need auth in SSR (with Next.js) set this to true
-        identityPoolId: process.env.IDENTITY_POOL_ID,
-        region: process.env.REGION,
-        userPoolId: process.env.USER_POOL_ID,
-        userPoolWebClientId: process.env.USER_POOL_WEB_CLIENT_ID
-      }}
-      events={{
-        signIn: (data) => {
-          // do what you want after the signIn event has been fired (e.g., redirect to a page)
-        }
-      }}>
-        <App />
-    </AuthProvider>
-  )
-}
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const currentUser = await getServerAuth({
+    req: ctx.req,
+    config: amplifyAuthConfig
+  });
+  return {
+    props: {}
+  };
+};
+
+// the rest of your page...
 ```
 
 ## API
@@ -140,6 +145,7 @@ The following functions are available:
 | `updateUserAttributes` | Updates the current user's attributes in AWS Cognito using the provided partial user attributes. |
 | `deleteUserAttributes` | Deletes the specified attributes from the current user's attributes in AWS Cognito. |
 | `deleteUser` | Deletes the current user from AWS Cognito. |
+| `getServerAuth` | Returns the currently authenticated user in an SSR context. |
 
 ## Install
 
