@@ -18,8 +18,15 @@
       }
     ]
   },
-  "scripts": {},
+  "scripts": {
+    "release": "release-it"
+  },
   "author": "Karim Daghari",
   "license": "ISC",
-  "devDependencies": {}
+  "devDependencies": {},
+  "release-it": {
+    "github": true,
+    "git": true,
+    "npm": true
+  }
 }
