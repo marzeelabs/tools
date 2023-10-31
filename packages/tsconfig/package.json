@@ -17,10 +17,6 @@
   "license": "ISC",
   "devDependencies": {},
   "release-it": {
-    "github": true,
-    "git": true,
-    "npm": {
-      "skipChecks": true
-    }
+    "git": false
   }
 }
