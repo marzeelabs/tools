@@ -6,11 +6,12 @@ export {
   deleteUser,
   deleteUserAttributes,
   forgotPassword,
-  getServerAuth,
   signIn,
   signOut,
   signUp,
   updateUserAttributes,
   type UserAttributes
 } from './lib/functions';
+export { getServerAuth } from './lib/next';
 export * from './react/provider';
+export type { AmplifyAuthConfig } from './types/amplify';
