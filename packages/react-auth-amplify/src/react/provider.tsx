@@ -1,8 +1,12 @@
 import { Hub } from 'aws-amplify';
 import React from 'react';
 import { getCurrentUser, type CognitoUser } from '../lib/functions';
-import { useSetupAmplify, type SetupProps } from '../lib/setup';
-import type { AuthEventType, HubEventHandler } from '../types/amplify';
+import { useSetupAmplify } from '../lib/setup';
+import type {
+  AmplifyAuthConfig,
+  AuthEventType,
+  HubEventHandler
+} from '../types/amplify';
 
 type CurrentUser = CognitoUser['attributes'];
 
@@ -32,13 +36,13 @@ type AuthProviderProps = {
         userPoolWebClientId: process.env.USER_POOL_WEB_CLIENT_ID
       }
    */
-  setup: SetupProps;
+  config: AmplifyAuthConfig;
 } & Partial<EventsTypes>;
 
 type Props = React.PropsWithChildren<AuthProviderProps>;
 
-export function AuthProvider({ children, events, setup }: Props) {
-  useSetupAmplify(setup);
+export function AuthProvider({ children, events, config }: Props) {
+  useSetupAmplify(config);
 
   const [currentUser, setCurrentUser] = React.useState<CurrentUser | null>(
     null

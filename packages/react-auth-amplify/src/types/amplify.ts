@@ -11,7 +11,7 @@ type AuthConfig = ReturnType<typeof Auth.configure>;
 /**
  * Configuration for AWS Amplify.
  */
-export type AWSAmplifyConfig = {
+export type AmplifyAuthConfig = {
   /**
    * Configuration for AWS Amplify Auth.
    */
