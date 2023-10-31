@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A set of tools commonly used at marzee",
   "scripts": {
-    "build": "pnpm run build --recursive",
+    "build": "pnpm --filter \"./packages/*\" build",
     "release": "pnpm run build && changeset publish",
     "commitlint": "commitlint --edit"
   },
