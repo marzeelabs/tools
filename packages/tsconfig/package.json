@@ -7,16 +7,8 @@
     "url": "https://github.com/marzeelabs/tools.git",
     "directory": "packages/tsconfig"
   },
-  "release": {
-    "branches": [
-      {
-        "name": "main"
-      },
-      {
-        "name": "dev",
-        "prerelease": true
-      }
-    ]
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "release": "release-it"
@@ -27,6 +19,8 @@
   "release-it": {
     "github": true,
     "git": true,
-    "npm": true
+    "npm": {
+      "skipChecks": true
+    }
   }
 }
