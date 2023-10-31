@@ -10,7 +10,7 @@
 
 ```json
 {
-  "extends": "@marzee/tsconfig/next",
+  "extends": "@marzee/tsconfig/nextjs",
   // the rest of your config here
 }
 ```

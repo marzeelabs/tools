@@ -1,6 +1,6 @@
 {
   "name": "@marzee/tsconfig",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A TSconfig with the latest best practices",
   "repository": {
     "type": "git",
@@ -18,24 +18,8 @@
       }
     ]
   },
-  "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
-    }
-  },
-  "scripts": {
-    "build": "esbuild ./src/index.ts --bundle --platform=node --minify --outdir=dist",
-    "prepublishOnly": "pnpm run build"
-  },
+  "scripts": {},
   "author": "Karim Daghari",
   "license": "ISC",
-  "devDependencies": {
-    "@tsconfig/next": "^2.0.1",
-    "@tsconfig/node18": "^18.2.2",
-    "esbuild": "^0.19.5"
-  }
+  "devDependencies": {}
 }
