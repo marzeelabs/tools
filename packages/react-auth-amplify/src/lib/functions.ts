@@ -1,5 +1,4 @@
-import { Auth, withSSRContext } from 'aws-amplify';
-import type { GetServerSidePropsContext } from 'next';
+import { Auth } from 'aws-amplify';
 
 type CognitoDefaults = {
   /**
@@ -28,7 +27,7 @@ type DefaultUserAttributes = CognitoDefaults & {
  */
 export interface UserAttributes extends DefaultUserAttributes {}
 
-type FunctionOutput<TData = unknown, TError = unknown> =
+export type FunctionOutput<TData = unknown, TError = unknown> =
   | {
       status: 'SUCCESS';
       data: TData;
@@ -348,15 +347,14 @@ export type CognitoUser = Record<string, unknown> & {
 type CurrentAuthenticatedUserReturn = CognitoUser | undefined | null;
 /**
  * @internal This function returns the currently authenticated user. It is only meant for internal use.
+ * @param auth This is the Auth object that is returned from `withSSRContext`.
  */
-export async function getCurrentUser(
-  auth?: typeof Auth
-): Promise<FunctionOutput<CurrentAuthenticatedUserReturn>> {
+export async function getCurrentUser(): Promise<
+  FunctionOutput<CurrentAuthenticatedUserReturn>
+> {
   try {
-    const authClass = auth ?? Auth;
-    const getCurrentAuthenticatedUser = authClass.currentAuthenticatedUser;
     const res: CurrentAuthenticatedUserReturn =
-      await getCurrentAuthenticatedUser();
+      await Auth.currentAuthenticatedUser();
     return {
       status: 'SUCCESS',
       data: res,
@@ -450,13 +448,4 @@ export async function deleteUser(): Promise<
       err: error
     };
   }
-}
-
-/**
- * @description This is a next.js specific option, it is to be used ONLY inside `getServerSideProps`
- */
-export async function getServerAuth(ctx: GetServerSidePropsContext) {
-  const amplify = withSSRContext({ req: ctx.req });
-  const auth: typeof Auth = amplify.Auth;
-  return await getCurrentUser(auth);
 }
