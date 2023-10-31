@@ -4,7 +4,7 @@ Welcome to our internal tools monorepo! This repository includes tools that will
 
 - [`react-auth-amplify`](/packages/react-auth-amplify/README.md): A package that provides authentication support for React.js (and Next.js) applications using AWS Amplify.
 - [`tsconfig`](/packages/tsconfig/README.md): Two TypeScript configuration files, one for Node.js backend development and another for Next.js frontend development.
-- [`eslint`](/packages/eslint/README.md): For now a template only for Next.js.
+- [`eslint-config`](/packages/eslint-config/README.md): For now a template only for Next.js.
 
 We hope that these tools will help streamline your development process, make it easier to build high-quality applications and focus on what matters! Happy coding!
 
